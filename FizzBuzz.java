@@ -1,10 +1,15 @@
+//there are 2 problems in this class (because of lazyness), nothing to do with each others
+
+//write an algorithm that prints all numbers between 1 and n, replacing multiples
+//of 3 with the String Fizz, multiples of 5 with Buzz and multiples of 15 with FizzBuzz.
+//see the method public static List<String> fizzBuzz(int n){...}
+
+//write a factorial that does not use resursion
+//see the method public static BigInteger factorialIter(int x){...}
 
 import java.util.List;
 import java.util.ArrayList;
-//import static org.junit.Assert.*;
-//import org.junit.Test;
 import java.math.*;
-//import com.numericalmethod.suanshu.number.big.BigDecimalUtils;
 
 public class FizzBuzz{
 
@@ -14,8 +19,7 @@ public class FizzBuzz{
 	if (x < 1) {
 	    throw new IllegalArgumentException("x is positive");
 	}
-	//assertEquals(x, 40);
-	//System.out.println(" x " + x);
+       
 	BigInteger f = new BigInteger("1");
 	//long f = 1;
 	BigInteger counter = new BigInteger("1");
@@ -23,7 +27,6 @@ public class FizzBuzz{
 	BigInteger bi =  new BigInteger(s);
 	while (!counter.equals(bi)){
 	    f =  f.multiply(counter);
-	    //System.out.println(" f " + f);
 	    counter = counter.add(new BigInteger("1"));
 	} 
 	
@@ -31,7 +34,7 @@ public class FizzBuzz{
 	return f;
     }
 
-
+    //computes the fizzbuzz problem
     public static List<String> fizzBuzz( int n){
 	
        
@@ -45,24 +48,24 @@ public class FizzBuzz{
 	    for (int i = 1; i <= n; i++){
 		if (( i % 3 ) == 0) {
 		    if ((i % 5) == 0) {
-			//System.out.println("FizzBuzz");
+		       
 			//sb.append(" FizzBuzz, ");
 			list.add("FizzBuzz");
 		    }//if
 		    else {
-			//System.out.println("Fizz");
+			
 			//sb.append(" Fizz, ");
 			list.add("Fizz");
 		    }
 		} //if
 		else {//number is not divisable by 3
 		    if ((i % 5) == 0){
-			System.out.println("Buzz");
+			
 			//sb.append(" Buzz, ");
 			list.add("Buzz");
 		    } 
 		    else{
-			System.out.println(i);
+			
 			//sb.append(Integer.toString(i) + " , ");
 			list.add(Integer.toString(i));
 		    }
@@ -78,7 +81,7 @@ public class FizzBuzz{
        
 
 	finally{
-	    System.out.println("good job!!!");
+	    //System.out.println("good job!!!");
 	}
 
 	//return sb.toString();
@@ -86,20 +89,21 @@ public class FizzBuzz{
     }
 
     public static void main(String [] args){
-    
+	int num = 100;
+
 	try{
-	    List<String> list = FizzBuzz.fizzBuzz(1000000000);
-	    //for (String s : list) System.out.println(s);
+	    List<String> list = FizzBuzz.fizzBuzz(num);
+	    for (String s : list) System.out.print(s + " , ");
 	}
 	catch(OutOfMemoryError e){
 	    System.out.println("Out of memory error");
 	    }
 
-	BigInteger f = FizzBuzz.factorialIter(5);
+	BigInteger f = FizzBuzz.factorialIter(num);
 	BigDecimal d =  new BigDecimal(f);
-	//BigDecimal l = d.round(new MathContext(1));
+       
 	int l = d.round(new MathContext(1)).scale() * -1 + 1;
-	System.out.println(" length " + l);
+	System.out.println("\nfactorial of " + num + " is " +  f +  " length " + l);
     }
 }
 
